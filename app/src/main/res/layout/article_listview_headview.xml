@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/article_top_vp"/>
+        <LinearLayout
+            android:id="@+id/ll"
+            android:orientation="horizontal"
+            android:layout_alignBottom="@+id/article_top_vp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/fragment_article_top_ll_paddingRight"
+            android:layout_height="@dimen/fragment_article_top_ll_layout_height"
+            android:gravity="bottom"
+            android:paddingBottom="@dimen/fragment_article_top_ll_paddingRight">
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

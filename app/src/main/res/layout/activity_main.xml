@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.dllo.autohome.MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/main_fragment"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.05">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/main_btn_article"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/btn_article"/>
+            <RadioButton
+                android:id="@+id/main_btn_forum"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:background="@drawable/btn_forum"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/main_btn_findcar"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:background="@drawable/btn_findcar"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/main_btn_sale"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:background="@drawable/btn_sale"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/main_btn_my"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:background="@drawable/btn_my"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackround">#d0d5d9</color>
+    <color name="colorItem">#ffffff</color>
+    <color name="colorText">#000000</color>
+    <color name="colorCatch">#f2c897</color>
+    <color name="colorCatchText">#dc8a3d</color>
+    <color name="colorCatchType2">#a5e0ea</color>
+    <color name="colorCatchTextType2">#3b99c9</color>
+</resources>
