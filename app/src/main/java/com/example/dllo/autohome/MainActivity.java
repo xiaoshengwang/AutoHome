@@ -12,6 +12,8 @@ import com.example.dllo.autohome.forum.ForumFragment;
 import com.example.dllo.autohome.my.MyFragment;
 import com.example.dllo.autohome.sale.SaleFragment;
 
+import cn.bmob.v3.Bmob;
+
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private RadioButton mainArticleBtn;
     private RadioButton mainForumBtn;
@@ -19,6 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private RadioButton mainSaleBtn;
     private RadioButton mainMyBtn;
     private FragmentManager manager;
+    private static final String APPLICATION_ID = "995b55f98ba5267cd03b71d059d56642";
 
     @Override
     protected int getLayout() {
@@ -32,6 +35,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mainFindCarBtn = bindView(R.id.main_btn_findcar);
         mainSaleBtn = bindView(R.id.main_btn_sale);
         mainMyBtn = bindView(R.id.main_btn_my);
+
+        Bmob.initialize(this, APPLICATION_ID);
 
     }
 

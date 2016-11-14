@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/dongtu1"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu1"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu2"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu3"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu4"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu5"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu6"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu7"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu8"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu9"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu10"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu11"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu12"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu13"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu14"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu15"
+        android:duration="50"
+        />
+    <item android:drawable="@mipmap/dongtu16"
+        android:duration="50"
+        />
+
+</animation-list>

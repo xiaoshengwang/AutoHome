@@ -3,6 +3,8 @@ package com.example.dllo.autohome.base;
 import android.app.Application;
 import android.content.Context;
 
+import cn.sharesdk.framework.ShareSDK;
+
 /**
  * Created by dllo on 16/10/24.
  *
@@ -16,6 +18,7 @@ public class MyApp extends Application{
     public void onCreate() {
         super.onCreate();
         sContext = this;
+        ShareSDK.initSDK(this,"1904aa5c9d977");
     }
 
     public static Context getContext(){

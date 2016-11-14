@@ -19,6 +19,7 @@
         android:layout_toRightOf="@+id/article_title_double_eleven"/>
 
     <ImageView
+        android:id="@+id/article_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

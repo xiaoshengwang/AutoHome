@@ -1,7 +1,5 @@
 package com.example.dllo.autohome.sale;
 
-import android.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,7 +7,7 @@ import android.util.Log;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dllo.autohome.R;
-import com.example.dllo.autohome.URLValues;
+import com.example.dllo.autohome.tools.URLValues;
 import com.example.dllo.autohome.base.BaseFragment;
 import com.example.dllo.autohome.bean.SaleBean;
 import com.example.dllo.autohome.tools.GsonRequest;

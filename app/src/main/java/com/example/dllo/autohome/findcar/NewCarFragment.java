@@ -8,10 +8,9 @@ import android.widget.ListView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dllo.autohome.R;
-import com.example.dllo.autohome.URLValues;
+import com.example.dllo.autohome.tools.URLValues;
 import com.example.dllo.autohome.base.BaseFragment;
 import com.example.dllo.autohome.bean.FindCarNewCarLvBean;
-import com.example.dllo.autohome.forum.ForumUrlValues;
 import com.example.dllo.autohome.tools.GsonRequest;
 import com.example.dllo.autohome.tools.VolleySingleton;
 

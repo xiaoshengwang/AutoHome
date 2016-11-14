@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ArticleTopVpAdapter extends PagerAdapter{
 
-    ArrayList<String> arrayList;
+    private ArrayList<String> arrayList;
 
     public void setArrayList(ArrayList<String> arrayList) {
         this.arrayList = arrayList;

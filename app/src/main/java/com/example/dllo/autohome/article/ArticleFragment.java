@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,6 +14,7 @@ import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.BaseFragment;
 import com.example.dllo.autohome.article.more.MoreActivity;
 import com.example.dllo.autohome.bean.MoreRvEvent;
+import com.example.dllo.autohome.search.SearchActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,6 +31,8 @@ public class ArticleFragment extends BaseFragment implements View.OnClickListene
     private ViewPager articleVP;
     private ImageView articleIMG;
     private String[] s = {"推荐", "优创+", "说客", "视频", "快报", "行情", "新闻", "评测", "导购", "用车", "技术", "文化", "改装"};
+    private ImageView search;
+    private Intent intent;
 
     @Override
     protected int getLayout() {
@@ -40,7 +44,11 @@ public class ArticleFragment extends BaseFragment implements View.OnClickListene
         articleTB = bindView(R.id.article_tb);
         articleVP = bindView(R.id.article_vp);
         articleIMG = bindView(R.id.article_img_more);
+
+        ImageView search = bindView(R.id.article_search);
+
         setClick(this, articleIMG);
+        setClick(this, search);
 
     }
 
@@ -54,6 +62,8 @@ public class ArticleFragment extends BaseFragment implements View.OnClickListene
         articleTB.setupWithViewPager(articleVP);
         articleTB.setSelectedTabIndicatorColor(Color.BLACK);
         articleTB.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        intent = new Intent();
 
     }
 
@@ -72,7 +82,11 @@ public class ArticleFragment extends BaseFragment implements View.OnClickListene
         switch (view.getId()){
             case R.id.article_img_more:
                 // 跳转到更多界面
-                Intent intent = new Intent(getActivity(), MoreActivity.class);
+                intent.setClass(getActivity(), MoreActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.article_search:
+                intent.setClass(getActivity(), SearchActivity.class);
                 startActivity(intent);
                 break;
         }

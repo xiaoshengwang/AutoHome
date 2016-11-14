@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d1d1d1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="9"
+            android:background="#e9e3e3">
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="9"
+                android:background="@null"
+                android:drawableLeft="@mipmap/ahlib_nav_icon_search_p"
+                android:hint="搜索关键字"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#0d100f" />
+
+            <ImageView
+                android:id="@+id/recommed_search_activity_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="0.8"
+                android:src="@mipmap/ic_launcher"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_search_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="取消"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_history_delete_all"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#cfcfcf">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  历史搜索记录                                                                       " />
+
+        <TextView
+            android:id="@+id/tv_history_delete_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_search_class"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ListView
+            android:id="@+id/lv_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+        </ListView>
+
+        <WebView
+            android:id="@+id/web_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</LinearLayout>
