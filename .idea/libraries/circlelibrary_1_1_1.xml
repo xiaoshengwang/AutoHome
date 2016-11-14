@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="circlelibrary-1.1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jorge.circleview/circlelibrary/1.1.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.jorge.circleview/circlelibrary/1.1.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jorge.circleview/circlelibrary/1.1.1/2b731d019309f18aeb8b2a80ea7ac5a6e5d0f88d/circlelibrary-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

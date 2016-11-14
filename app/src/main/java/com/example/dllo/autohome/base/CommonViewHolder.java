@@ -1,6 +1,8 @@
 package com.example.dllo.autohome.base;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -9,7 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dllo.autohome.sale.BusinessRvAdapter;
+import com.example.dllo.autohome.sale.FoundFieldItemRVAdapter;
+import com.example.dllo.autohome.sale.FoundTimeGoGoItemRVAdapter;
+import com.example.dllo.autohome.sale.FoundTimeItemRVAdapter;
+import com.example.dllo.autohome.tools.GlideImageLoder;
 import com.example.dllo.autohome.tools.VolleySingleton;
+import com.youth.banner.Banner;
+import com.youth.banner.Transformer;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/10/31.
@@ -21,6 +32,7 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
     // 用它来存放所有的View, key就是View的id
     private SparseArray<View> views;
     private View itemView; // 行布局
+    private RecyclerView recyclerView;
 
     public CommonViewHolder(View itemView) {
         super(itemView);
@@ -103,4 +115,57 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
         return this;
     }
 
+    public void setBanner(int sale_rv_banner, int center, int i, int circleIndicator, List<String> imgUrls) {
+
+        Banner banner = getView(sale_rv_banner);
+        banner.setBannerStyle(circleIndicator);
+        banner.setImageLoader(new GlideImageLoder());
+        banner.setImages(imgUrls);
+        banner.setBannerAnimation(Transformer.Default);
+        banner.isAutoPlay(true);
+        banner.setDelayTime(i);
+        banner.setIndicatorGravity(center);
+        banner.start();
+    }
+
+
+
+    public void setRecyclerViewH(Context mContext, int i, int item_found_time_rv, RecyclerView.Adapter timeItemRVAdapter) {
+
+        recyclerView = getView(item_found_time_rv);
+        recyclerView.setAdapter(timeItemRVAdapter);
+
+        GridLayoutManager manager = new GridLayoutManager(mContext, i);
+        recyclerView.setLayoutManager(manager);
+
+    }
+
+    public void setImg(int item_found_single_img, String imageurl) {
+        ImageView imageView = getView(item_found_single_img);
+        // 网络请求图片
+
+        VolleySingleton.getInstance().getImage(imageurl, imageView );
+    }
+
+    public void setRecyclerViewTime(Context mContext, int item_found_time_gogo_rv, RecyclerView.Adapter timeGoGoItemRVAdapter) {
+
+        recyclerView = getView(item_found_time_gogo_rv);
+        recyclerView.setAdapter(timeGoGoItemRVAdapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(manager);
+
+    }
+
+    public void setRecyclerView(Context mContext, int i, int item_found_field_recyclerview, RecyclerView.Adapter fieldItemRVAdapter) {
+
+        recyclerView = getView(item_found_field_recyclerview);
+        recyclerView.setAdapter(fieldItemRVAdapter);
+
+        GridLayoutManager manager = new GridLayoutManager(mContext, i);
+        recyclerView.setLayoutManager(manager);
+
+
+    }
 }
