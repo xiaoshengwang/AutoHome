@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.example.dllo.autohome.R;
 
 /**
  * Created by dllo on 16/10/24.
@@ -43,5 +46,6 @@ public abstract class BaseFragment extends Fragment{
             view.setOnClickListener(clickListener);
         }
     }
+
 
 }

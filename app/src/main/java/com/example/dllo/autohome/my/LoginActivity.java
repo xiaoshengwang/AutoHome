@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 BmobUser bmobUser = new BmobUser();
                 bmobUser.setUsername(loginUserName.getText() + "");
                 bmobUser.setPassword(loginPassword.getText() + "");
-                bmobUser.login(new SaveListener<BmobUser>() {
+                bmobUser.login( new SaveListener<BmobUser>() {
                     @Override
                     public void done(BmobUser bmobUser, BmobException e) {
                         if (e == null) {
