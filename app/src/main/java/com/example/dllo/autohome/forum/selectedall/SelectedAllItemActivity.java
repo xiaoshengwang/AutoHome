@@ -1,4 +1,4 @@
-package com.example.dllo.autohome.forum.selected_all;
+package com.example.dllo.autohome.forum.selectedall;
 
 import android.content.Intent;
 import android.view.View;

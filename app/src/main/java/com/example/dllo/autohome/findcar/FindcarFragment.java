@@ -14,6 +14,10 @@ import java.util.ArrayList;
  * Created by dllo on 16/10/24.
  */
 public class FindcarFragment extends BaseFragment {
+
+    private TabLayout findCarTB;
+    private ViewPager findCarVp;
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_findcar;
@@ -21,8 +25,13 @@ public class FindcarFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        TabLayout findCarTB = bindView(R.id.find_car_tb);
-        ViewPager findCarVp = bindView(R.id.find_car_vp);
+        findCarTB = bindView(R.id.find_car_tb);
+        findCarVp = bindView(R.id.find_car_vp);
+
+    }
+
+    @Override
+    protected void initData() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new NewCarFragment());
         fragments.add(new UsedCarFragment());
@@ -31,10 +40,5 @@ public class FindcarFragment extends BaseFragment {
         findCarVp.setAdapter(adapter);
         findCarTB.setupWithViewPager(findCarVp);
         findCarTB.setSelectedTabIndicatorColor(Color.BLACK);
-    }
-
-    @Override
-    protected void initData() {
-
     }
 }

@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by dllo on 16/10/27.
  */
 public class MyForumVPAdapter extends FragmentPagerAdapter{
-    ArrayList<Fragment> fragments;
-    String [] title = {"精选", "论坛"};
+    private ArrayList<Fragment> fragments;
+    private String [] title = {"精选", "论坛"};
     public void setFragments(ArrayList<Fragment> fragments) {
         this.fragments = fragments;
     }

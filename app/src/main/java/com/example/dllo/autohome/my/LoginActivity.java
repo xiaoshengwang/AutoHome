@@ -81,6 +81,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void getUserName(BmobUser userBean){
         loginUserName.setText(userBean.getUsername());
         Log.d("LoginActivity", userBean.getUsername());
+
     }
 
     @Override

@@ -1,9 +1,8 @@
-package com.example.dllo.autohome.forum.hot_post;
+package com.example.dllo.autohome.forum.hotpost;
 
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,14 +11,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.BaseActivity;
-import com.example.dllo.autohome.bean.ForumSeletedBean;
 import com.example.dllo.autohome.bean.HotPostBean;
-import com.example.dllo.autohome.forum.ForumSeletedLvAdapter;
-import com.example.dllo.autohome.forum.ForumUrlValues;
 import com.example.dllo.autohome.tools.GsonRequest;
+import com.example.dllo.autohome.tools.URLValues;
 import com.example.dllo.autohome.tools.VolleySingleton;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 
 /**
@@ -53,12 +48,12 @@ public class HotPostActivity extends BaseActivity implements View.OnClickListene
         Intent intent = getIntent();
         hot_post_title.setText(intent.getStringExtra("title"));
 
-        gsonRequest(ForumUrlValues.FORUM_SELECTED_URL);
+        gsonRequest(URLValues.FORUM_SELECTED_URL);
 
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                gsonRequest(ForumUrlValues.FORUM_SELECTED_URL);
+                gsonRequest(URLValues.FORUM_SELECTED_URL);
                 refresh.setRefreshing(false);
             }
         });

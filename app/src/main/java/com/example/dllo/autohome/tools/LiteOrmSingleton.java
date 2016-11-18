@@ -17,9 +17,7 @@ import java.util.concurrent.Executors;
  * Created by dllo on 16/11/8.
  */
 public class LiteOrmSingleton {
-    //饿汉单例,,没有办法在构造方法里传值
-    //懒汉单例,可以在构造里传值
-    private static LiteOrmSingleton base = new LiteOrmSingleton();
+    private static LiteOrmSingleton base;
     private LiteOrm mLiteOrm;  //初始化的时候一般都要写在单例里 不然会提示关闭之前数据库或者出奇怪的问题
     private Handler mHandler;//用来做线程之间的切换的
     private Executor mExecutorPool;//线程池
@@ -32,6 +30,15 @@ public class LiteOrmSingleton {
     }
 
     public static LiteOrmSingleton getIntstance() {
+
+        if (base == null){
+            synchronized (LiteOrmSingleton.class){
+                if (base == null) {
+                    base = new LiteOrmSingleton();
+                }
+            }
+        }
+
         return base;
     }
 

@@ -1,4 +1,4 @@
-package com.example.dllo.autohome.forum.selected_all;
+package com.example.dllo.autohome.forum.selectedall;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,11 +50,15 @@ public class SelectedAllItemAdapter extends BaseAdapter{
                 .setText(R.id.selected_item_replycounts_tv, bean.getResult().getList().get(i).getReplycounts() + "回帖")
                 .setImage(R.id.selected_item_iv, bean.getResult().getList().get(i).getSmallpic());
 
+        final String id = bean.getResult().getList().get(i).getTopicid() + "";
+
         viewHolder.setItemClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(viewGroup.getContext(), DetailsActivity.class);
-                intent.putExtra("id", bean.getResult().getList().get(i).getTopicid());
+                intent.putExtra("id", id);
+                intent.putExtra("title","论坛");
+
                 viewGroup.getContext().startActivity(intent);
             }
         });

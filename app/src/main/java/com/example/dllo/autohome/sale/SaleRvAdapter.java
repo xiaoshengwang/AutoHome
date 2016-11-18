@@ -19,14 +19,12 @@ import java.util.List;
  */
 public class SaleRvAdapter extends RecyclerView.Adapter<CommonViewHolder>{
     private SaleBean saleBean;
-    Context mContext;
+    private Context mContext;
 
     public SaleRvAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-    private int width,height;
-    private CommonViewHolder mCommonViewHolder;
     //焦点图
     private final static int FOCUS_TYPE=0;
     //业务接口
@@ -83,11 +81,11 @@ public class SaleRvAdapter extends RecyclerView.Adapter<CommonViewHolder>{
             case PRODUCE_TYPE:
                 CommonViewHolder produceVH = CommonViewHolder.getViewHolder(parent, R.layout.item_found_produce);
                 return produceVH;
-            case MODE_TYPE:
+
+            default:
                 CommonViewHolder modeVH = CommonViewHolder.getViewHolder(parent, R.layout.item_found_mode);
                 return modeVH;
-            default:
-                return null;
+
              }
         }
 

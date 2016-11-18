@@ -14,10 +14,10 @@ import com.example.dllo.autohome.R;
 public class SearchAdapter extends BaseAdapter {
     private Context mContext;
     public int i = 1;
-    CarSesrchBean bean;
+    private SearchBean bean;
 
 
-    public void setBean(CarSesrchBean bean) {
+    public void setBean(SearchBean bean) {
         this.bean = bean;
     }
 

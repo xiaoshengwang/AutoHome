@@ -34,6 +34,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".article.more.MoreActivity"/>
+        <activity android:name=".forum.selectedall.SelectedAllActivity"/>
+        <activity android:name=".forum.selectedall.SelectedAllItemActivity"/>
+        <activity android:name=".forum.hotpost.HotPostActivity"/>
+        <activity android:name=".forum.selectedall.DetailsActivity"/>
+        <activity android:name=".my.LoginActivity"/>
+        <activity android:name=".my.RegisterActivity"/>
+        <activity android:name=".my.MyProfileActivity"/>
+        <activity android:name=".search.SearchActivity"/>
+        <activity android:name=".LeadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,15 +72,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".article.more.MoreActivity"/>
-        <activity android:name=".forum.selected_all.SelectedAllActivity"/>
-        <activity android:name=".forum.selected_all.SelectedAllItemActivity"/>
-        <activity android:name=".forum.hot_post.HotPostActivity"/>
-        <activity android:name=".forum.selected_all.DetailsActivity"/>
-        <activity android:name=".my.LoginActivity"/>
-        <activity android:name=".my.RegisterActivity"/>
-        <activity android:name=".my.MyProfileActivity"/>
-        <activity android:name=".search.SearchActivity"/>
     </application>
 
 </manifest>

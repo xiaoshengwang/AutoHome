@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by dllo on 16/10/24.
  */
 public class ArticleVPAdapter extends FragmentPagerAdapter{
-    SparseArray<Fragment> arrayList;
+    private SparseArray<Fragment> arrayList;
     private final String[] s;
 
 

@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Created by dllo on 16/10/27.
  */
 public class MyFindCarVPAdapter extends FragmentPagerAdapter{
-    ArrayList<Fragment> fragments;
-    String [] title = {"新车", "二手车"};
+    private ArrayList<Fragment> fragments;
+    private String [] title = {"新车", "二手车"};
     public void setFragments(ArrayList<Fragment> fragments) {
         this.fragments = fragments;
     }

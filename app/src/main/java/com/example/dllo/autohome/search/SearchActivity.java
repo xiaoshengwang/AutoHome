@@ -30,8 +30,8 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
     private SearchAdapter searchAdapter;
     private WebView webView;
     private TextView tvCancel;
-    private ListView historyListView;
-    private ArrayList<SearchCarNameBean> beanArrayList1;
+    private ListView historyLv;
+    private ArrayList<SearchCarNameBean> searchCarNameBeen;
     private LinearLayout linearLayoutHistory;
     private TextView tvDeleteAll;
     private HistoryAdapter historyAdapter;
@@ -46,7 +46,7 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
         editTextSearch = bindView(R.id.et_search);
         editTextSearch.addTextChangedListener(this);
         classListview = bindView(R.id.lv_search_class);
-        historyListView = bindView(R.id.lv_history);
+        historyLv = bindView(R.id.lv_history);
         linearLayoutHistory = bindView(R.id.ll_history_delete_all);
         tvDeleteAll = bindView(R.id.tv_history_delete_all);
         webView = (WebView) findViewById(R.id.web_search);
@@ -54,14 +54,14 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
         tvCancel.setOnClickListener(this);
         tvDeleteAll.setOnClickListener(this);
 
-        historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        historyLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 linearLayoutHistory.setVisibility(View.GONE);
-                historyListView.setVisibility(View.GONE);
-                String string = beanArrayList1.get(i).getName();
+                historyLv.setVisibility(View.GONE);
+                String string = searchCarNameBeen.get(i).getName();
                 String searchUrl = "http://sou.m.autohome.com.cn/h5/1.1/search.html?type=0&keyword=" + string + "&night=0&bbsid=0&lng=121.550912&lat=38.889734&nettype=5&netprovider=0";
-                editTextSearch.setText(beanArrayList1.get(i).getName());
+                editTextSearch.setText(searchCarNameBeen.get(i).getName());
                 webView.setVisibility(View.VISIBLE);
                 webView.loadUrl(searchUrl);
             }
@@ -74,24 +74,24 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
         LiteOrmSingleton.getIntstance().queryAllData(new LiteOrmSingleton.OnQueryListenerAll<SearchCarNameBean>() {
             @Override
             public void onQuery(List list) {
-                beanArrayList1 = (ArrayList<SearchCarNameBean>) list;
+                searchCarNameBeen = (ArrayList<SearchCarNameBean>) list;
                 Log.d("SearchActivity", "list:" + list);
                 if (list == null || list.size() == 0) {
                     linearLayoutHistory.setVisibility(View.GONE);
                 }
                 historyAdapter = new HistoryAdapter();
-                Collections.reverse(beanArrayList1);
-                for (int i = 0; i < beanArrayList1.size() - 1; i++) {
-                    for (int j = beanArrayList1.size() - 1; j > i; j--) {
-                        if (beanArrayList1.get(j).getName().equals(beanArrayList1.get(i).getName())) {
-                            beanArrayList1.remove(i);
+                Collections.reverse(searchCarNameBeen);
+                for (int i = 0; i < searchCarNameBeen.size() - 1; i++) {
+                    for (int j = searchCarNameBeen.size() - 1; j > i; j--) {
+                        if (searchCarNameBeen.get(j).getName().equals(searchCarNameBeen.get(i).getName())) {
+                            searchCarNameBeen.remove(i);
                         }
                     }
                 }
 
-                historyAdapter.setBeanArrayList(beanArrayList1);
-                historyListView.setAdapter(historyAdapter);
-                historyListView.setVisibility(View.VISIBLE);
+                historyAdapter.setBeanArrayList(searchCarNameBeen);
+                historyLv.setAdapter(historyAdapter);
+                historyLv.setVisibility(View.VISIBLE);
             }
         }, SearchCarNameBean.class);
     }
@@ -107,7 +107,7 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
 
     @Override
     public void afterTextChanged(Editable editable) {
-        historyListView.setVisibility(View.GONE);
+        historyLv.setVisibility(View.GONE);
         innitRequestInternet(editable);
     }
 
@@ -115,9 +115,9 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
         if (!s.toString().equals("")) {
             String str = s.toString();
             String url = "http://mobilenc.app.autohome.com.cn/sou_v5.7.0/sou/suggestwords.ashx?pm=2&k=" + str + "&t=4";
-            GsonRequest<CarSesrchBean> gsonrequest = new GsonRequest<CarSesrchBean>(CarSesrchBean.class, url, new Response.Listener<CarSesrchBean>() {
+            GsonRequest<SearchBean> gsonrequest = new GsonRequest<SearchBean>(SearchBean.class, url, new Response.Listener<SearchBean>() {
                 @Override
-                public void onResponse(CarSesrchBean response) {
+                public void onResponse(SearchBean response) {
                     searchAdapter = new SearchAdapter(SearchActivity.this);
                     searchAdapter.setBean(response);
                     classListview.setAdapter(searchAdapter);
@@ -133,7 +133,7 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
         }
     }
 
-    private void classListviewClicklisener(final CarSesrchBean response) {
+    private void classListviewClicklisener(final SearchBean response) {
         Log.d("oooooooo", "呵呵");
         classListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -163,8 +163,8 @@ public class SearchActivity extends BaseActivity implements TextWatcher, View.On
                 break;
             case R.id.tv_history_delete_all:
                 LiteOrmSingleton.getIntstance().deleteAllData();
-                for (int i = beanArrayList1.size(); i > 0; i--) {
-                    beanArrayList1.remove(0);
+                for (int i = searchCarNameBeen.size(); i > 0; i--) {
+                    searchCarNameBeen.remove(0);
                 }
                 historyAdapter.notifyDataSetChanged();
                 linearLayoutHistory.setVisibility(View.GONE);

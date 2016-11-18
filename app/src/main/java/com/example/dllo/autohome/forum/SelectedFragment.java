@@ -13,18 +13,21 @@ import com.android.volley.VolleyError;
 import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.BaseFragment;
 import com.example.dllo.autohome.bean.ForumSeletedBean;
-import com.example.dllo.autohome.forum.hot_post.HotPostActivity;
-import com.example.dllo.autohome.forum.selected_all.SelectedAllActivity;
-import com.example.dllo.autohome.forum.selected_all.SelectedAllItemActivity;
+import com.example.dllo.autohome.forum.hotpost.HotPostActivity;
+import com.example.dllo.autohome.forum.selectedall.SelectedAllActivity;
+import com.example.dllo.autohome.forum.selectedall.SelectedAllItemActivity;
 import com.example.dllo.autohome.tools.GsonRequest;
+import com.example.dllo.autohome.tools.URLValues;
 import com.example.dllo.autohome.tools.VolleySingleton;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 /**
  * Created by dllo on 16/10/27.
  */
 public class SelectedFragment extends BaseFragment implements View.OnClickListener {
 
-    private ListView forumSelectedLv;
+    private PullToRefreshListView forumSelectedLv;
     private LinearLayout forumSelectedLl;
     private View view;
     private RelativeLayout hotPost;
@@ -36,6 +39,8 @@ public class SelectedFragment extends BaseFragment implements View.OnClickListen
     private ImageView choosy;
     private ImageView woman_find_car;
     private ImageView forum_sensation;
+    private int i = 1;
+    private ForumSeletedLvAdapter adapter;
 
     @Override
     protected int getLayout() {
@@ -68,19 +73,21 @@ public class SelectedFragment extends BaseFragment implements View.OnClickListen
         choosy.setOnClickListener(this);
         woman_find_car.setOnClickListener(this);
         forum_sensation.setOnClickListener(this);
-        forumSelectedLv.addHeaderView(view);
+
+        ListView listView = forumSelectedLv.getRefreshableView();
+        listView.addHeaderView(view);
     }
 
     @Override
     protected void initData() {
 
         intent = new Intent();
-        GsonRequest<ForumSeletedBean> gsonRequestQuatation = new GsonRequest<>(ForumSeletedBean.class, ForumUrlValues.FORUM_SELECTED_URL
+        GsonRequest<ForumSeletedBean> gsonRequestQuatation = new GsonRequest<>(ForumSeletedBean.class, URLValues.FORUM_SELECTED_URL
                 , new Response.Listener<ForumSeletedBean>() {
 
             @Override
             public void onResponse(ForumSeletedBean response) {
-                ForumSeletedLvAdapter adapter = new ForumSeletedLvAdapter(getActivity());
+                adapter = new ForumSeletedLvAdapter(getActivity());
                 adapter.setForumSeletedBean(response);
                 forumSelectedLv.setAdapter(adapter);
 
@@ -92,7 +99,60 @@ public class SelectedFragment extends BaseFragment implements View.OnClickListen
             }
         });
         VolleySingleton.getInstance().addRequest(gsonRequestQuatation);
+        forumSelectedLv.setMode(PullToRefreshBase.Mode.BOTH);
+        forumSelectedLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> pullToRefreshBase) {
+                GsonRequest<ForumSeletedBean> gsonRequestQuatation = new GsonRequest<>(ForumSeletedBean.class,URLValues.FORUM_SELECTED_URL
+
+                        , new Response.Listener<ForumSeletedBean>() {
+
+                    @Override
+                    public void onResponse(ForumSeletedBean response) {
+                        adapter.setForumSeletedBean(response);
+                        forumSelectedLv.setAdapter(adapter);
+                        forumSelectedLv.onRefreshComplete();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                VolleySingleton.getInstance().addRequest(gsonRequestQuatation);
+
+
+
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> pullToRefreshBase) {
+                i = i + 1;
+                GsonRequest<ForumSeletedBean> gsonRequestQuatation = new GsonRequest<>(ForumSeletedBean.class,
+                        "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c0-p" + i + "-s30.json"
+                        , new Response.Listener<ForumSeletedBean>() {
+
+                    @Override
+                    public void onResponse(ForumSeletedBean response) {
+                        adapter.addBean(response);
+                        forumSelectedLv.onRefreshComplete();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                VolleySingleton.getInstance().addRequest(gsonRequestQuatation);
+
+                forumSelectedLv.onRefreshComplete();
+            }
+        });
+
+
+
     }
+
 
     @Override
     public void onClick(View view) {
@@ -110,43 +170,43 @@ public class SelectedFragment extends BaseFragment implements View.OnClickListen
             case R.id.wife:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "媳妇当车模");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c104-p1-s30.json");
+                intent.putExtra("url", URLValues.WIFE_MODEL_URL);
                 startActivity(intent);
                 break;
             case R.id.beauty:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "美人'记'");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c110-p1-s30.json");
+                intent.putExtra("url", URLValues.NOTORIOUS_URL);
                 startActivity(intent);
                 break;
             case R.id.hige_position:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "高端阵地");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c118-p1-s30.json");
+                intent.putExtra("url", URLValues.HIGH_POINT_URL);
                 startActivity(intent);
                 break;
             case R.id.motorola:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "摩友天地");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c184-p1-s30.json");
+                intent.putExtra("url", URLValues.FRIEND_HEAVEN_EARTH_URL);
                 startActivity(intent);
                 break;
             case R.id.choosy:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "精挑细选");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c121-p1-s30.json");
+                intent.putExtra("url", URLValues.AUSLESE_URL);
                 startActivity(intent);
                 break;
             case R.id.woman_find_car:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "妹子选车");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c191-p1-s30.json");
+                intent.putExtra("url", URLValues.SISTER_CAR_URL);
                 startActivity(intent);
                 break;
             case R.id.forum_sensation:
                 intent.setClass(getActivity(), SelectedAllItemActivity.class);
                 intent.putExtra("title", "论坛红人馆");
-                intent.putExtra("url", "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c172-p1-s30.json");
+                intent.putExtra("url", URLValues.HOF_URL);
                 startActivity(intent);
                 break;
         }

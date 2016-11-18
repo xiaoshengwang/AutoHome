@@ -1,6 +1,7 @@
 package com.example.dllo.autohome.base;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.example.dllo.autohome.sale.BusinessRvAdapter;
 import com.example.dllo.autohome.sale.FoundFieldItemRVAdapter;
 import com.example.dllo.autohome.sale.FoundTimeGoGoItemRVAdapter;
 import com.example.dllo.autohome.sale.FoundTimeItemRVAdapter;
+import com.example.dllo.autohome.tools.CircleDrawable;
 import com.example.dllo.autohome.tools.GlideImageLoder;
 import com.example.dllo.autohome.tools.VolleySingleton;
 import com.youth.banner.Banner;
@@ -95,6 +97,21 @@ public class CommonViewHolder extends RecyclerView.ViewHolder{
         imageView.setImageResource(imgId);
         return this;
     }
+
+
+    public CommonViewHolder setImage(int id, String url, boolean is){
+        final ImageView imageView = getView(id);
+        // 网络请求图片
+        VolleySingleton.getInstance().getBitmap(url, new VolleySingleton.BitmapListener() {
+            @Override
+            public void onGetBitmap(Bitmap bitmap) {
+                CircleDrawable drawable = new CircleDrawable(bitmap);
+                imageView.setImageDrawable(drawable);
+            }
+        });
+        return this;
+    }
+
 
     public CommonViewHolder setImage(int id, String url){
         ImageView imageView = getView(id);

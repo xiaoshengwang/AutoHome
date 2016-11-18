@@ -28,20 +28,16 @@ public class VolleySingleton {
 
     public static VolleySingleton getInstance() {
         if (volleySingleton == null) {
-
-        synchronized (VolleySingleton.class) {
-        if (volleySingleton == null) {
-        volleySingleton = new VolleySingleton();
+             synchronized (VolleySingleton.class) {
+                    if (volleySingleton == null) {
+                        volleySingleton = new VolleySingleton();
+                    }
              }
-        }
         }
         return volleySingleton;
     }
 
-    // 获得RequestQueue
-    public RequestQueue getmRequestQueue() {
-        return mRequestQueue;
-    }
+
 
     public void getImage(String url, ImageView imageView) {
         imageLoader.get(url, ImageLoader.getImageListener(imageView, R.mipmap.ic_launcher, R.mipmap.ic_launcher));

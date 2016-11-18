@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/10/10.
  */
-public class CarSesrchBean {
+public class SearchBean {
     /**
      * returncode : 0
      * message :

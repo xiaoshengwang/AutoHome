@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.CommonViewHolder;
 import com.example.dllo.autohome.bean.ArticleTopBean;
+import com.example.dllo.autohome.forum.selectedall.DetailsActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by dllo on 16/11/1.
  */
 public class ArticleLvAdapter extends BaseAdapter{
-    Context context;
+    private Context context;
     private ArticleTopBean articleTopBean;
 
     static final int TYPE_1 = 1;
@@ -27,6 +28,7 @@ public class ArticleLvAdapter extends BaseAdapter{
     static final int TYPE_5 = 5;
     static final int TYPE_6 = 6;
     private CommonViewHolder viewHolder;
+
 
     public ArticleLvAdapter(Context context) {
         this.context = context;
@@ -120,12 +122,32 @@ public class ArticleLvAdapter extends BaseAdapter{
                         .setImage(R.id.iv_listview_picture_t6_3,list.get(2));
              break;
 
+
         }
+         String id = articleTopBean.getResult().getNewslist().get(position).getId() + "";
+        Log.d("ArticleLvAdapter123456", id);
+        viewHolder.setItemClick(new MyListener(id));
 
 
 
         return viewHolder.getItemView();
 
+    }
+
+    class MyListener implements View.OnClickListener{
+        String id;
+
+        public MyListener(String id) {
+            this.id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("title", "推荐");
+            intent.putExtra("id", id);
+            context.startActivity(intent);
+        }
     }
 
         public static List<String> getallpic(String str) {

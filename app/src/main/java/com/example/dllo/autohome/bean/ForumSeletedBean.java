@@ -8,6 +8,8 @@ import java.util.List;
 public class ForumSeletedBean {
 
 
+
+
     /**
      * message :
      * returncode : 0
@@ -72,6 +74,8 @@ public class ForumSeletedBean {
          */
 
         private List<ListBean> list;
+
+
 
         public int getPageindex() {
             return pageindex;
@@ -242,5 +246,12 @@ public class ForumSeletedBean {
                 this.bbsname = bbsname;
             }
         }
+        public void  addData(List<ListBean> list) {
+            for (int i = 0; i < list.size(); i++) {
+                this.list.add(this.list.size(), list.get(i));
+            }
+        }
+
     }
+
 }

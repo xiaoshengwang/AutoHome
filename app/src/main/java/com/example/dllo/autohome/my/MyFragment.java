@@ -58,6 +58,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         qq.setOnClickListener(this);
         intent = new Intent();
 
+
         EventBus.getDefault().register(this);
     }
 
@@ -106,7 +107,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                     Platform qq = ShareSDK.getPlatform(QQ.NAME);
                     qq.authorize();
                     qq.setPlatformActionListener(new PlatformActionListener() {
-                        @Override
+                                @Override
                         public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
                             PlatformDb platformDb = platform.getDb();
                             final String name = platformDb.getUserName();

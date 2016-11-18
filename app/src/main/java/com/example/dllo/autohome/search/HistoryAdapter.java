@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class HistoryAdapter extends BaseAdapter {
 
-    ArrayList<SearchCarNameBean>beanArrayList;
+    private ArrayList<SearchCarNameBean>beanArrayList;
 
     public void setBeanArrayList(ArrayList<SearchCarNameBean> beanArrayList) {
         this.beanArrayList = beanArrayList;

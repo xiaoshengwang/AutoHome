@@ -18,15 +18,16 @@ import com.android.volley.VolleyError;
 import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.BaseFragment;
 import com.example.dllo.autohome.bean.ArticleTopBean;
+import com.example.dllo.autohome.bean.ExpressBean;
 import com.example.dllo.autohome.bean.LobbyistsBean;
+import com.example.dllo.autohome.bean.UnihubBean;
+import com.example.dllo.autohome.bean.VideoBean;
 import com.example.dllo.autohome.tools.GsonRequest;
 import com.example.dllo.autohome.tools.Point;
+import com.example.dllo.autohome.tools.URLValues;
 import com.example.dllo.autohome.tools.VolleySingleton;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +119,7 @@ public class ArticleTopFragment extends BaseFragment {
             }
         });
 
+
     }
 
 
@@ -131,7 +133,7 @@ public class ArticleTopFragment extends BaseFragment {
             switch (type) {
                 case 0:
 //                    tv1.setText("推荐");
-                    GsonRequest<ArticleTopBean> gsonRequest = new GsonRequest<>(ArticleTopBean.class, ArticleUrlValues.ARTICLE_TOP_URL
+                    GsonRequest<ArticleTopBean> gsonRequest = new GsonRequest<>(ArticleTopBean.class, URLValues.ARTICLE_TOP_URL
                             , new Response.Listener<ArticleTopBean>() {
 
                         @Override
@@ -161,10 +163,32 @@ public class ArticleTopFragment extends BaseFragment {
                     break;
                 case 1:
 //                    tv1.setText("优创+");
+
+                    GsonRequest<UnihubBean> gsonRequestUnihub = new GsonRequest<>(UnihubBean.class, URLValues.URL_YC
+                            , new Response.Listener<UnihubBean>() {
+
+                        @Override
+                        public void onResponse(UnihubBean response) {
+
+                            ArticleUnihubAdapter adapter = new ArticleUnihubAdapter();
+                            adapter.setBean(response);
+                            Log.d("ArticleTopFragment", "啊啊啊啊啊");
+                            lvArticle.setAdapter(adapter);
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+                    VolleySingleton.getInstance().addRequest(gsonRequestUnihub);
+
                     break;
                 case 2:
 //                    tv1.setText("说客");
-                    GsonRequest<LobbyistsBean> gsonRequestLobby = new GsonRequest<>(LobbyistsBean.class, ArticleUrlValues.LOBBYISTS_URL
+                    GsonRequest<LobbyistsBean> gsonRequestLobby = new GsonRequest<>(LobbyistsBean.class, URLValues.LOBBYISTS_URL
                             , new Response.Listener<LobbyistsBean>() {
 
                         @Override
@@ -172,8 +196,8 @@ public class ArticleTopFragment extends BaseFragment {
 
                             ArticleLobbyAdapter adapter = new ArticleLobbyAdapter(getActivity());
                             adapter.setLobbyistsBean(response);
-                            Log.d("ArticleTopFragment", "啊啊啊啊啊");
                             lvArticle.setAdapter(adapter);
+                            Log.d("ArticleTopFragment", "啊啊啊啊啊");
 
 
                         }
@@ -187,7 +211,7 @@ public class ArticleTopFragment extends BaseFragment {
                     lvArticle.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
                         @Override
                         public void onPullDownToRefresh(PullToRefreshBase<ListView> pullToRefreshBase) {
-                            GsonRequest<LobbyistsBean> gsonRequestLobby = new GsonRequest<>(LobbyistsBean.class, ArticleUrlValues.LOBBYISTS_URL
+                            GsonRequest<LobbyistsBean> gsonRequestLobby = new GsonRequest<>(LobbyistsBean.class, URLValues.LOBBYISTS_URL
                                     , new Response.Listener<LobbyistsBean>() {
 
                                 @Override
@@ -213,45 +237,84 @@ public class ArticleTopFragment extends BaseFragment {
                             lvArticle.onRefreshComplete();
                         }
                     });
-
                     break;
                 case 3:
-//                    tv1.setText("视频");
+//                    tv1.setText("视频");URL_VIEDIO
+                    GsonRequest<VideoBean> gsonRequestVideo = new GsonRequest<>(VideoBean.class, URLValues.URL_VIEDIO
+                            , new Response.Listener<VideoBean>() {
+
+                        @Override
+                        public void onResponse(VideoBean response) {
+
+                            VideoAdapter adapter = new VideoAdapter();
+                            adapter.setBean(response);
+                            lvArticle.setAdapter(adapter);
+                            Log.d("ArticleTopFragment", "啊啊啊啊啊");
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+                    VolleySingleton.getInstance().addRequest(gsonRequestVideo);
                     break;
                 case 4:
 //                    tv1.setText("快报");
+                    GsonRequest<ExpressBean> gsonRequestExpress = new GsonRequest<>(ExpressBean.class, URLValues.URL_VIEDIO
+                            , new Response.Listener<ExpressBean>() {
+
+                        @Override
+                        public void onResponse(ExpressBean response) {
+
+                            ExpressAdapter adapter = new ExpressAdapter();
+                            adapter.setBean(response);
+                            lvArticle.setAdapter(adapter);
+                            Log.d("ArticleTopFragment", "啊啊啊啊啊");
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    });
+                    VolleySingleton.getInstance().addRequest(gsonRequestExpress);
                     break;
                 case 5:
 //                    tv1.setText("行情");
-                    gsonRequest(ArticleUrlValues.QUOTATION_URL);
+                    gsonRequest(URLValues.QUOTATION_URL);
                     break;
                 case 6:
 //                    tv1.setText("新闻");
-                    gsonRequest(ArticleUrlValues.NEWS_URL);
+                    gsonRequest(URLValues.NEWS_URL);
                     break;
                 case 7:
 //                    tv1.setText("评测");
-                    gsonRequest(ArticleUrlValues.EVALUATING_URL);
+                    gsonRequest(URLValues.EVALUATING_URL);
                     break;
                 case 8:
 //                    tv1.setText("导购");
-                    gsonRequest(ArticleUrlValues.SHOPPING_URL);
+                    gsonRequest(URLValues.SHOPPING_URL);
                     break;
                 case 9:
 //                    tv1.setText("用车");
-                    gsonRequest(ArticleUrlValues.USED_CAR_URL);
+                    gsonRequest(URLValues.USED_CAR_URL);
                     break;
                 case 10:
 //                    tv1.setText("技术");
-                    gsonRequest(ArticleUrlValues.TECHNOLOGY_URL);
+                    gsonRequest(URLValues.TECHNOLOGY_URL);
                     break;
                 case 11:
 //                    tv1.setText("文化");
-                    gsonRequest(ArticleUrlValues.CULTURE_URL);
+                    gsonRequest(URLValues.CULTURE_URL);
                     break;
                 case 12:
 //                    tv1.setText("改装");
-                    gsonRequest(ArticleUrlValues.REFIT_URL);
+                    gsonRequest(URLValues.REFIT_URL);
                     break;
             }
         }

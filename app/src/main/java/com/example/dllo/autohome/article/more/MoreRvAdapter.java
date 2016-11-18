@@ -21,7 +21,7 @@ import java.util.Collections;
  * Created by dllo on 16/11/9.
  */
 public class MoreRvAdapter extends RecyclerView.Adapter<CommonViewHolder>{
-    ArrayList<String> arrayList;
+    private ArrayList<String> arrayList;
     private Context context;
 
     public void setArrayList(ArrayList<String> arrayList) {

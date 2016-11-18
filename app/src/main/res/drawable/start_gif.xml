@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/opening1"
+         android:duration="50"/>
+    <item android:drawable="@mipmap/opening2"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening3"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening4"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening5"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening6"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening7"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening8"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening9"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening10"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening11"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening12"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening13"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening14"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening15"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening16"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening17"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening18"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening19"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening20"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening21"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening22"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening23"
+        android:duration="50"/>
+    <item android:drawable="@mipmap/opening24"
+        android:duration="50"/>
+
+
+
+</animation-list>

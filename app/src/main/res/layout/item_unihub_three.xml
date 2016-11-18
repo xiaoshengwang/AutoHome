@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@mipmap/icon_myself_day"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/unihub_user_three_icon"/>
+        <TextView
+            android:id="@+id/unihub_three_uesrname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textColor="#440031a6"
+            android:layout_marginLeft="25dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:text="aaaaaaa"
+        android:id="@+id/unihub_three_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingLeft="45dp"/>
+
+        <ImageView
+            android:id="@+id/unihub_three_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_myself_day"
+            android:paddingLeft="45dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="45dp">
+
+        <TextView
+            android:id="@+id/unihub_three_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qweasd"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qweasd"
+            android:id="@+id/unihub_three_replycount"
+            android:layout_marginLeft="125dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qweasd"
+            android:id="@+id/unihub_three_praisenum"
+            android:layout_marginLeft="15dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

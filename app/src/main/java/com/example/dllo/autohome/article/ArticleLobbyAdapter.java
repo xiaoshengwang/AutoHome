@@ -1,6 +1,8 @@
 package com.example.dllo.autohome.article;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,13 +10,14 @@ import android.widget.BaseAdapter;
 import com.example.dllo.autohome.R;
 import com.example.dllo.autohome.base.CommonViewHolder;
 import com.example.dllo.autohome.bean.LobbyistsBean;
+import com.example.dllo.autohome.forum.selectedall.DetailsActivity;
 
 /**
  * Created by dllo on 16/11/3.
  */
 public class ArticleLobbyAdapter extends BaseAdapter{
-    LobbyistsBean lobbyistsBean;
-    Context context;
+    private LobbyistsBean lobbyistsBean;
+    private Context context;
     private CommonViewHolder viewHolder;
 
     public void setLobbyistsBean(LobbyistsBean lobbyistsBean) {
@@ -28,7 +31,8 @@ public class ArticleLobbyAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return lobbyistsBean == null ? 0 : lobbyistsBean.getResult().getList().size();
+        Log.d("ArticleLobbyAdapter", "lobbyistsBean:" + lobbyistsBean);
+        return lobbyistsBean.getResult().getList().size();
     }
 
     @Override
@@ -48,6 +52,29 @@ public class ArticleLobbyAdapter extends BaseAdapter{
                 .setText(R.id.lobby_list_comment_tv, lobbyistsBean.getResult().getList().get(i).getReplycount() + "评论")
                 .setText(R.id.lobby_list_date_tv, lobbyistsBean.getResult().getList().get(i).getTime())
                 .setImage(R.id.lobby_list_img, lobbyistsBean.getResult().getList().get(i).getSmallpic());
+
+        String id = lobbyistsBean.getResult().getList().get(i).getId() + "";
+        Log.d("ArticleLvAdapter123456", id);
+        viewHolder.setItemClick(new MyListener(id));
+
         return viewHolder.getItemView();
     }
+
+
+    class MyListener implements View.OnClickListener{
+        String id;
+
+        public MyListener(String id) {
+            this.id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("title", "说客");
+            intent.putExtra("id", id);
+            context.startActivity(intent);
+        }
+    }
+
 }

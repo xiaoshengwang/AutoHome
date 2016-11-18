@@ -13,7 +13,7 @@ import com.example.dllo.autohome.bean.FindCarNewCarLvBean;
  * Created by dllo on 16/11/8.
  */
 public class NewCarRightLvAdapter extends BaseAdapter{
-    FindCarNewCarLvBean bean;
+    private FindCarNewCarLvBean bean;
 
     @Override
     public int getCount() {
@@ -40,12 +40,12 @@ public class NewCarRightLvAdapter extends BaseAdapter{
         CommonViewHolder commonViewHolder = CommonViewHolder.getViewHolder(view,viewGroup, R.layout.item_find_car_right_lv);
         commonViewHolder.setText(R.id.new_car_right_tv,bean.getResult().getBrandlist().get(i).getLetter());
 
-        commonViewHolder.setItemClick(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(viewGroup.getContext(), bean.getResult().getBrandlist().get(i).getLetter(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        commonViewHolder.setItemClick(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(viewGroup.getContext(), bean.getResult().getBrandlist().get(i).getLetter(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return commonViewHolder.getItemView();
     }

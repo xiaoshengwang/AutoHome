@@ -13,7 +13,7 @@ import com.example.dllo.autohome.bean.FindCarNewCarLvBean;
  */
 public class NewCarBodyLvAdapter extends BaseAdapter{
 
-    FindCarNewCarLvBean.ResultBean.BrandlistBean listBean;
+    private FindCarNewCarLvBean.ResultBean.BrandlistBean listBean;
 
     public void setListBean(FindCarNewCarLvBean.ResultBean.BrandlistBean listBean) {
         this.listBean = listBean;

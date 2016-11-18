@@ -31,7 +31,6 @@ public class ArticleFragment extends BaseFragment implements View.OnClickListene
     private ViewPager articleVP;
     private ImageView articleIMG;
     private String[] s = {"推荐", "优创+", "说客", "视频", "快报", "行情", "新闻", "评测", "导购", "用车", "技术", "文化", "改装"};
-    private ImageView search;
     private Intent intent;
 
     @Override
